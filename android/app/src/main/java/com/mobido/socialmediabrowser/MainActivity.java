@@ -1,4 +1,4 @@
-package com.mobidosocialmediabrowser;
+package com.mobido.socialmediabrowser;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
