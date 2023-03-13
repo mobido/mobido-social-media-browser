@@ -1,4 +1,4 @@
-package com.mobido.socialmediabrowser;
+package com.mobido.socialmedia.app;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

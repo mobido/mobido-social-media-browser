@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.mobido.socialmediabrowser"
+    namespace "com.mobido.socialmedia.app"
     defaultConfig {
-        applicationId "com.mobido.socialmediabrowser"
+        applicationId "com.mobido.socialmedia.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
