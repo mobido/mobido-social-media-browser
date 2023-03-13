@@ -10,3 +10,14 @@ The problem is that social media businesses focus on profits, so they game the u
 
 A social media browser is an "unbundled" app.  Just as a web browser, like Chrome or Safari, allows you to browse any website, a social media browser allows you to watch social media from any source.  Users can select a social media browser that respects their sensibilities, such as time limits to browsing, or to filter certain kinds of content.
 
+
+## Run Android
+
+$ npx react-native start
+
+## Updating pods
+
+$ npx pod-install ios
+
+
+
