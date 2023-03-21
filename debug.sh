@@ -2,4 +2,4 @@
 
 cd "$(dirname "$0")"
 
-npx react-native start
+npx react-native start --verbose
