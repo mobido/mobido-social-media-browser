@@ -6,13 +6,13 @@ import {
     Text,
 } from 'react-native';
 
-const wandSource = require('../assets/images/star_wand.png')
+const logoSource = require('../assets/images/logo_round.png')
 
 export default class LoadingScreen extends PureComponent {
     render() {
         return (
             <View style={Style.container}>
-                <Image style={Style.wand} source={wandSource} />
+                <Image style={Style.logo} source={logoSource} />
                 <Text style={Style.text}>Mobido</Text>
             </View>
         );
@@ -25,12 +25,12 @@ const Style = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    wand: {
+    logo: {
         resizeMode: 'contain',
         width: '25%',
         height: '25%',
     },
     text: {
-        fontSize: 100,
+        fontSize: 60,
     }
 });
