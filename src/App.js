@@ -1,6 +1,6 @@
+import 'react-native-gesture-handler' // This simply needs to be imported to enable, and at the top!
 import React from 'react'
 import { Provider } from 'react-redux'
-import 'react-native-gesture-handler' // This simply needs to be imported to enable
 import { store, persistor } from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 

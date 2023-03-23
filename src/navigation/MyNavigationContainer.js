@@ -1,43 +1,40 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { useColorScheme } from 'react-native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import SettingsScreen from '../screens/settings/SettingsScreen'
+import HomeScreen from '../screens/HomeScreen'
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'rgb(255, 45, 85)',
+  },
+};
+
+
+//
+// Settings Stack
+//
+
+function SettingsStack() {
+    const Stack = createNativeStackNavigator();
+    return (
+        <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="So" component={SettingsScreen} />
+        </Stack.Navigator>
+    );
 }
 
-/*
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Settings Screen</Text>
-    </View>
-  );
-}*/
-
-/*
-const Stack = createNativeStackNavigator();
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}*/
+//
+// Bottom/main tab navigator
+//
 
 const Tab = createBottomTabNavigator();
 
@@ -51,9 +48,11 @@ function tabOptions(tabBarLabel,iconName) {
 }
 
 function App() {
+    const scheme = useColorScheme();
+
     return (
-        <NavigationContainer>
-            <Tab.Navigator>
+        <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Tab.Navigator screenOptions={{ headerShown: false }}>
                 <Tab.Screen
                     name="News"
                     component={HomeScreen}
@@ -67,9 +66,9 @@ function App() {
                     component={HomeScreen}
                     options={tabOptions('Chat','chatbox-outline')} />
                 <Tab.Screen
-                    name="Settings"
-                    component={SettingsScreen}
-                    options={tabOptions('Settings','settings-outline')} />
+                    name="More"
+                    component={SettingsStack}
+                    options={tabOptions('More','settings-outline')} />
             </Tab.Navigator>
         </NavigationContainer>
     );

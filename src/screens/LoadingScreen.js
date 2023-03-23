@@ -13,7 +13,6 @@ export default class LoadingScreen extends PureComponent {
         return (
             <View style={Style.container}>
                 <Image style={Style.logo} source={logoSource} />
-                <Text style={Style.text}>Mobido</Text>
             </View>
         );
     }
@@ -30,7 +29,4 @@ const Style = StyleSheet.create({
         width: '25%',
         height: '25%',
     },
-    text: {
-        fontSize: 60,
-    }
 });
