@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { useColorScheme } from 'react-native';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -8,26 +7,20 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import SettingsScreen from '../screens/settings/SettingsScreen'
 import HomeScreen from '../screens/HomeScreen'
+import MoreScreen from '../screens/MoreScreen'
 
-const MyTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: 'rgb(255, 45, 85)',
-  },
-};
-
+import { useColorTheme } from '../style/Colors'
 
 //
-// Settings Stack
+// More Stack
 //
 
-function SettingsStack() {
+function MoreStack() {
     const Stack = createNativeStackNavigator();
     return (
-        <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="So" component={SettingsScreen} />
+        <Stack.Navigator initialRouteName="More2">
+            <Stack.Screen name="More" component={MoreScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
         </Stack.Navigator>
     );
 }
@@ -48,10 +41,10 @@ function tabOptions(tabBarLabel,iconName) {
 }
 
 function App() {
-    const scheme = useColorScheme();
+    const { navigationTheme } = useColorTheme();
 
     return (
-        <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <NavigationContainer theme={navigationTheme}>
             <Tab.Navigator screenOptions={{ headerShown: false }}>
                 <Tab.Screen
                     name="News"
@@ -67,8 +60,8 @@ function App() {
                     options={tabOptions('Chat','chatbox-outline')} />
                 <Tab.Screen
                     name="More"
-                    component={SettingsStack}
-                    options={tabOptions('More','settings-outline')} />
+                    component={MoreStack}
+                    options={tabOptions('More','ellipsis-vertical-outline')} />
             </Tab.Navigator>
         </NavigationContainer>
     );

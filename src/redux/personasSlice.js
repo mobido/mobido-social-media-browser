@@ -1,29 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const slice = createSlice({
+/**
+ *  Persona:
+ *  {
+ *      nickname: "Bob",
+ *      key: {
+ *          type: 'ed25519',
+ *          id: "2342hj234hg234kh234",
+ *          secret: "4erfgwergfvsdegrqwrte",
+ *      }
+ *  }
+ */
+
+const slice = createSlice({
     name: 'personas',
-    initialState: {
-        count: 0,
-    },
+    initialState: [],
     reducerPath: 'personas',
     reducers: {
-        increment: (state) => {
-            // Redux Toolkit allows us to write "mutating" logic in reducers. It
-            // doesn't actually mutate the state because it uses the Immer library,
-            // which detects changes to a "draft state" and produces a brand new
-            // immutable state based off those changes
-            state.count += 1
+        add: (state, action) => {
+            state.push( action.payload )
         },
-        decrement: (state) => {
-            state.count -= 1
-        },
-        incrementByAmount: (state, action) => {
-            state.count += action.payload
+        remove: (state, action) => {
+            const id = action.payload;
+            return state.filter(persona => persona.id != id)
         },
     },
 })
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = slice.actions
+export const { add, remove } = slice.actions
 
 export default slice

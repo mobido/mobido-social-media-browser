@@ -1,16 +1,24 @@
 import React from 'react';
-import { useColorScheme } from 'react-native';
 import { Text, StyleSheet } from 'react-native';
 
-export default function MyText(props) {
-    const colorScheme = useColorScheme();
+import { useColorTheme } from '../style/Colors'
+import GlobalStyle from '../style/Style'
+
+export default (props) => {
+    const { colors } = useColorTheme();
 
     const style = StyleSheet.create({
-        color: colorScheme == 'light' ? '#000' : '#fff',
+        color: colors.text,
+        ...GlobalStyle.mediumText,
+        ...props.style,
     });
 
+    // remove style, otherwise expansion in Text will override our style property
+    const filteredProps = { ...props };
+    delete filteredProps.style;
+
     return (
-        <Text style={style} {...props}>
+        <Text style={style} {...filteredProps}>
             {props.children}   
         </Text>
     );

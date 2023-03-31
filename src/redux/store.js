@@ -10,9 +10,11 @@ import thunk from 'redux-thunk';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import personasSlice from './personasSlice'
+import themeSlice from './themeSlice'
 
 const combinedReducers = combineReducers({
-    [personasSlice.reducerPath]: personasSlice.reducer,
+    [personasSlice.name]: personasSlice.reducer,
+    [themeSlice.name]: themeSlice.reducer,
 })
 
 const persistConfig = {

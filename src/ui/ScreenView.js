@@ -1,21 +1,22 @@
 import React from 'react';
-import { useColorScheme } from 'react-native';
 import { View, StyleSheet } from 'react-native';
 
-export default function ScreenView(props) {
+import { useColorTheme } from '../style/Colors'
 
-    const colorScheme = useColorScheme();
+export default function ScreenView({ children }) {
+
+    const { colors } = useColorTheme();
 
     const style = StyleSheet.create({
         flex: 1,
-        backgroundColor: colorScheme == 'light' ? '#fff' : '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: colors.background,
+        padding: 0,
+        margin: 0
     });
 
     return (
         <View style={style}>
-            {props.children}
+            {children}
         </View>
     );
 }
